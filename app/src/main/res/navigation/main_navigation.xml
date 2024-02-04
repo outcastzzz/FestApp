@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/catalogFragment">
+    <fragment
+        android:id="@+id/catalogFragment"
+        android:name="com.register.festapp.presentation.screens.CatalogFragment"
+        android:label="fragment_catalog"
+        tools:layout="@layout/fragment_catalog" >
+        <action
+            android:id="@+id/action_catalogFragment_to_shopItemInfoFragment"
+            app:destination="@id/shopItemInfoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/shopItemInfoFragment"
+        android:name="com.register.festapp.presentation.screens.ShopItemInfoFragment"
+        android:label="fragment_shop_item_info"
+        tools:layout="@layout/fragment_shop_item_info" >
+        <action
+            android:id="@+id/action_shopItemInfoFragment_to_catalogFragment"
+            app:destination="@id/catalogFragment" />
+    </fragment>
+</navigation>
