@@ -2,6 +2,8 @@ package com.register.festapp.presentation
 
 import android.os.Bundle
 import android.util.Log
+import androidx.activity.OnBackPressedCallback
+import androidx.activity.OnBackPressedDispatcher
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.graphics.drawable.toDrawable
@@ -29,7 +31,7 @@ class HostActivity : AppCompatActivity() {
         binding = ActivityHostBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setupNavigation()
-
+        setupBackPressed()
     }
 
     private fun setupNavigation() {
@@ -62,6 +64,15 @@ class HostActivity : AppCompatActivity() {
         }
         bottomView.selectedItemId = R.id.navigation_catalog
         replaceFragment(CatalogFragment())
+    }
+
+    private fun setupBackPressed() {
+        val callback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                return
+            }
+        }
+        onBackPressedDispatcher.addCallback(this, callback)
     }
 
     private fun replaceFragment(fragment: Fragment) {

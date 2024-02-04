@@ -1,6 +1,7 @@
 package com.register.festapp.presentation.screens
 
 import android.content.Context
+import android.icu.text.PluralRules
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -16,6 +17,7 @@ import com.register.festapp.databinding.FragmentShopItemInfoBinding
 import com.register.festapp.presentation.MainViewModel
 import com.register.festapp.presentation.ShoppingApp
 import com.register.festapp.presentation.ViewModelFactory
+import java.util.Locale
 import javax.inject.Inject
 
 class ProfileFragment : Fragment() {
@@ -52,7 +54,14 @@ class ProfileFragment : Fragment() {
         viewModel.getUserData()
         observeViewModel()
         viewModel.favouriteList.observe(viewLifecycleOwner) {
-            binding.tvFavouritesCount.text = it.size.toString()
+            val count = it.size.toDouble()
+            val pluralRules = PluralRules.forLocale(Locale.forLanguageTag("ru"))
+            val word: String = when (pluralRules.select(count)) {
+                "one" -> "товар"
+                "few", "many" -> "товара"
+                else -> "товаров"
+            }
+            binding.tvFavouritesCount.text = "${count.toInt()} $word"
         }
         binding.layoutFavourites.setOnClickListener {
             launchFavouritesFragment()

@@ -388,7 +388,7 @@
                     android:fontFamily="@font/sf_pro_display_regular"
                     android:gravity="start"
                     android:text="Water, Propylene Glycol, Dipropylene Glycol, Lauric acid, Myristic Acid, Potassium Hydroxide, Lauryl Hydroxysultaine, Potassium Cocoate, Potassium Cocoyl Glycinate, Sodium Chloride, Glycerin, Phenoxyethanol, Chlorphenesin, Fragrance, Caprylyl Glycol, Ethylhexylglycerin, Capric acid, Palmitic Acid, Disodium EDTA, Sodium Bicarbonate, Cocamidopropyl Betaine, Butylene Glycol."
-                    android:textSize="12sp"
+                    android:textSize="11sp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -396,7 +396,7 @@
                     app:lineHeight="15.6sp" />
 
                 <TextView
-                    android:id="@+id/btn_full_composition_list"
+                    android:id="@+id/btn_full_composition"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"

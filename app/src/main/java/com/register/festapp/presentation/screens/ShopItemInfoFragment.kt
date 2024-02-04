@@ -3,6 +3,7 @@ package com.register.festapp.presentation.screens
 import android.content.Context
 import android.os.Bundle
 import android.text.SpannableStringBuilder
+import android.text.TextUtils
 import android.text.style.StrikethroughSpan
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -55,6 +56,7 @@ class ShopItemInfoFragment : Fragment() {
         binding.ivMoveBack.setOnClickListener {
             setupMoveBack()
         }
+        setupHideShowCompositionText()
     }
 
     private fun observeViewModel() {
@@ -136,6 +138,8 @@ class ShopItemInfoFragment : Fragment() {
                     countryCreatedValueTv.visibility = View.GONE
                 }
                 compositionValueTv.text = it.ingredients
+                compositionValueTv.maxLines = 2
+                compositionValueTv.ellipsize = TextUtils.TruncateAt.END
             }
             ratingBar.rating = it.feedback.rating.toFloat()
             ratingBar.numStars = 5
@@ -152,6 +156,23 @@ class ShopItemInfoFragment : Fragment() {
                 } else {
                     layoutHided.visibility = View.VISIBLE
                     btnHideCharacteristics.text = "Скрыть"
+                }
+            }
+        }
+    }
+
+    private fun setupHideShowCompositionText() {
+        with(binding) {
+            btnFullComposition.setOnClickListener {
+                if (compositionValueTv.height == 35) {
+                    val textView = compositionValueTv
+                    val layoutParams = textView.layoutParams
+                    layoutParams.height = ViewGroup.LayoutParams.WRAP_CONTENT
+                    textView.layoutParams = layoutParams
+                    btnFullComposition.text = "Скрыть"
+                } else {
+                    compositionValueTv.height = 35
+                    btnFullComposition.text = "Подробнее"
                 }
             }
         }
